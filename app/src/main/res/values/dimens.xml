@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="margin8">8dp</dimen>
+  <dimen name="margin16">16dp</dimen>
+  <dimen name="margin32">32dp</dimen>
+  <dimen name="margin64">64dp</dimen>
+  <dimen name="margin80">80dp</dimen>
+  <dimen name="margin128">128dp</dimen>
+  <dimen name="margin150">150dp</dimen>
+  <dimen name="image_splash_size">220dp</dimen>
+  <dimen name="app_normal_text">16sp</dimen>
+  <dimen name="app_large_text">24sp</dimen>
+  <dimen name="font_11">11sp</dimen>
+  <dimen name="font_12">12sp</dimen>
+  <dimen name="font_14">14sp</dimen>
+  <dimen name="font_16">16sp</dimen>
+  <dimen name="font_18">18sp</dimen>
+  <dimen name="font_20">20sp</dimen>
+  <dimen name="font_22">22sp</dimen>
+  <dimen name="font_24">24sp</dimen>
+  <dimen name="font_26">26sp</dimen>
+  <dimen name="font_28">28sp</dimen>
+  <dimen name="font_30">30sp</dimen>
+</resources>

@@ -1,0 +1,54 @@
+<resources>
+  <string name="app_name">Bardiani</string>
+  <string name="app_version">version 0.1</string>
+  <string name="modeAuto">АВТОМАТЧЕСКИЙ РЕЖИМ</string>
+  <string name="modeOff">ОТКЛЮЧЕН</string>
+  <string name="modeManual">РУЧНОЙ РЕЖИМ</string>
+  <string name="settings">НАСТРОЙКИ</string>
+  <string name="error_connection">ОШИБКА</string>
+  <string name="error_illegal_function">НЕИЗВЕСТННАЯ ФУНКЦИЯ</string>
+  <string name="not_connected">НЕТ СВЯЗИ С КОНТРОЛЛЕРОМ</string>
+  <string name="error_ip_port">Проверти ip и port подключения!</string>
+  <string name="error_sensor">Проверьте датчики открытия и закрытия</string>
+  <string name="start">Пуск</string>
+  <string name="valve1">Открыть клапан</string>
+  <string name="valve2">Промывка верхнего\nседла</string>
+  <string name="valve3">Промывка нижнего\nседла</string>
+  <string name="valveClose">Клапан закрыт</string>
+  <string name="valveOpen">Клапан открыт</string>
+  <string name="valveTopSeatFlush">Промывка верхнего седла</string>
+  <string name="valveLowerSeatFlush">Промывка нижнего седла</string>
+  <string name="ip">IP</string>
+  <string name="port">PORT</string>
+  <string name="ip_address">127.0.0.1</string>
+  <string name="port_number">502</string>
+  <string name="text_timer5">Таймер открытия\nклапана сек.</string>
+  <string name="text_timer1">Таймер простоя сек.</string>
+  <string name="save">Сохранить</string>
+  <string name="default_str">По умолчанию</string>
+  <string name="default_ip">192.168.122.85</string>
+  <string name="default_port">502</string>
+  <string name="default_time5">5</string>
+  <string name="default_time1">1</string>
+
+  <string-array name="mode">
+    <item>АВТОМАТИЧЕСКИЙ РЕЖИМ</item>
+    <item>РУЧНОЙ РЕЖИМ</item>
+    <item>ОТКЛЮЧЕН</item>
+  </string-array>
+
+  <plurals name="number_of_items">
+    <item quantity="one">%d item</item>
+    <item quantity="other">%d items</item>
+  </plurals>
+
+  <string name="err_illegal_function">В запросе был передан недопустимый код функции</string>
+  <string name="err_illegal_data_address">Указанный в запросе адрес не существует</string>
+  <string name="err_illegal_data_value">Неверный формат запроса, например количество байт в запросе не соответствует ожидаемому</string>
+  <string name="err_server_device_failure">Произошла невосстановимая ошибка на устройстве при выполнении запрошенной операции</string>
+  <string name="err_acknowledge">Запрос принят, выполняется, но выполнение потребует много времени; необходимо увеличить таймаут</string>
+  <string name="err_server_device_busy">Устройство занято обработкой предыдущего запроса</string>
+  <string name="err_negative_acknowledge">Устройство не может выполнить запрос, необходимо получить от устройства дополнительную диагностическую информацию. Возможно, требуется тех. обслуживание</string>
+  <string name="err_memory_parity_error">Ошибка четности при обращении к внутренней памяти устройства</string>
+
+</resources>
