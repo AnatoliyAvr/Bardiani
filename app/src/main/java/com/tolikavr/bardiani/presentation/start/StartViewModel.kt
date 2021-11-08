@@ -1,14 +1,16 @@
 package com.tolikavr.bardiani.presentation.start
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tolikavr.bardiani.R
 import com.tolikavr.bardiani.domain.usecase.mb.*
+import com.tolikavr.bardiani.presentation.constants.DELAY_10
 import com.tolikavr.bardiani.presentation.constants.DELAY_100
 import com.tolikavr.bardiani.presentation.constants.ioDispatcher
 import com.tolikavr.bardiani.presentation.extensions.cycle
-import com.tolikavr.bardiani.presentation.utils.CustomStateFlow
+import com.tolikavr.bardiani.presentation.start.models.ModelMb
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -28,7 +30,8 @@ class StartViewModel(
 
   init {
     viewModelScope.launch(ioDispatcher) {
-      connectToModBus.execute(host = "192.168.1.38", port = "502")
+//      connectToModBus.execute(host = "192.168.1.38", port = "502")
+      connectToModBus.execute(host = "10.12.18.106", port = "503")
     }
   }
 
@@ -68,77 +71,16 @@ class StartViewModel(
     }
   }
 
-
-  fun getOpen(): StateFlow<Boolean> {
-    val result = MutableStateFlow(false)
+  fun getModelMb(): StateFlow<ModelMb> {
+    val result = MutableStateFlow(ModelMb())
     viewModelScope.launch(ioDispatcher) {
-      ValueMb.openState.collect {
+      ValueMb.modelMbState.collect {
         when (it) {
-          is Boolean -> result.value = it
+          is ModelMb -> result.value = it
         }
       }
     }
     return result
-  }
-
-  fun getClose(): StateFlow<Boolean> {
-    val result = MutableStateFlow(false)
-    viewModelScope.launch(ioDispatcher) {
-      ValueMb.closeState.collect {
-        when (it) {
-          is Boolean -> result.value = it
-        }
-      }
-    }
-    return result
-  }
-
-  fun getModeAuto(): StateFlow<Boolean> {
-    val result = MutableStateFlow(false)
-    viewModelScope.launch(ioDispatcher) {
-      ValueMb.modeAutoState.collect {
-        when (it) {
-          is Boolean -> result.value = it
-        }
-      }
-    }
-    return result
-  }
-
-  fun getModeManual(): StateFlow<Boolean> {
-    val result = MutableStateFlow(false)
-    viewModelScope.launch(ioDispatcher) {
-      ValueMb.modeManualState.collect {
-        when (it) {
-          is Boolean -> result.value = it
-        }
-      }
-    }
-    return result
-  }
-
-  val customStateFlow = CustomStateFlow<Boolean>()
-
-  fun getModeAutoTest() {
-    viewModelScope.launch(ioDispatcher) {
-      ValueMb.modeAutoState.collect {
-        when (it) {
-          is Boolean -> customStateFlow.add(it)
-        }
-      }
-    }
-  }
-
-  fun getModeManualTest() {
-    viewModelScope.launch(ioDispatcher) {
-      ValueMb.modeManualState.collect {
-        when (it) {
-          is Boolean -> {
-            customStateFlow.add(it)
-          }
-        }
-      }
-    }
   }
 
   fun setTime5(set: Number) {
@@ -153,19 +95,31 @@ class StartViewModel(
     }
   }
 
+  fun update10(): Job {
+    return viewModelScope.cycle(delay = DELAY_10) {
+      ValueMb.connectState.value = connected.execute()
+    }
+  }
+
   fun update100(): Job {
     return viewModelScope.cycle(delay = DELAY_100) {
-      ValueMb.connectState.value = connected.execute()
-      ValueMb.startState.value = getValue.execute(ValueMb.start) { saveDb("startState", it) }
-      ValueMb.valve1State.value = getValue.execute(ValueMb.valve1) { saveDb("valve1State", it) }
-      ValueMb.valve2State.value = getValue.execute(ValueMb.valve2) { saveDb("valve2State", it) }
-      ValueMb.valve3State.value = getValue.execute(ValueMb.valve3) { saveDb("valve3State", it) }
-      ValueMb.openState.value = getValue.execute(ValueMb.open) { saveDb("openState", it) }
-      ValueMb.closeState.value = getValue.execute(ValueMb.close) { saveDb("closeState", it) }
-      ValueMb.modeAutoState.value = getValue.execute(ValueMb.modeAuto) { saveDb("modeAutoState", it) }
-      ValueMb.modeManualState.value = getValue.execute(ValueMb.modeManual) { saveDb("modeManualState", it) }
-      ValueMb.time5State.value = getValue.execute(ValueMb.time5) { saveDb("time5State", it) }
-      ValueMb.time1State.value = getValue.execute(ValueMb.time1) { saveDb("time1State", it) }
+      try {
+        ValueMb.modelMbState.value = ModelMb(
+          start = getValue.execute(ValueMb.start) {},
+          valve1 = getValue.execute(ValueMb.valve1) {},
+          valve2 = getValue.execute(ValueMb.valve2) {},
+          valve3 = getValue.execute(ValueMb.valve3) {},
+          open = getValue.execute(ValueMb.open) {},
+          close = getValue.execute(ValueMb.close) {},
+          modeAuto = getValue.execute(ValueMb.modeAuto) {},
+          modeManual = getValue.execute(ValueMb.modeManual) {},
+          time5 = getValue.execute(ValueMb.time5) {},
+          time1 = getValue.execute(ValueMb.time1) {},
+        )
+      } catch (e: Exception) {
+        Log.d("AAA", "${e.message}")
+      }
+
     }
   }
 

@@ -32,14 +32,5 @@ object ValueMb {
   var time1 = BaseLocator.holdingRegister(1, 2, DataType.TWO_BYTE_INT_UNSIGNED)!!
 
   var connectState = MutableStateFlow(Any())
-  var startState = MutableStateFlow(Any())
-  var valve1State = MutableStateFlow(Any())
-  var valve2State = MutableStateFlow(Any())
-  var valve3State = MutableStateFlow(Any())
-  var openState = MutableStateFlow(Any())
-  var closeState = MutableStateFlow(Any())
-  var modeAutoState = MutableStateFlow(Any())
-  var modeManualState = MutableStateFlow(Any())
-  var time5State = MutableStateFlow(Any())
-  var time1State = MutableStateFlow(Any())
+  var modelMbState = MutableStateFlow(Any())
 }

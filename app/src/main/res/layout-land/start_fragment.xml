@@ -108,8 +108,8 @@
     android:layout_marginBottom="@dimen/margin8"
     android:textAllCaps="false"
     android:textAlignment="center"
-    android:textOff="@string/valve1"
-    android:textOn="@string/valve1"
+    android:textOff="@string/valve1_close"
+    android:textOn="@string/valve1_open"
     android:textSize="@dimen/font_12"
     android:visibility="invisible"
     app:layout_constraintBottom_toBottomOf="parent"
@@ -123,8 +123,8 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/margin8"
     android:textAllCaps="false"
-    android:textOff="@string/valve2"
-    android:textOn="@string/valve2"
+    android:textOff="@string/valve2_close"
+    android:textOn="@string/valve2_open"
     android:textSize="@dimen/font_11"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/btn_valve3"
@@ -137,13 +137,12 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/margin8"
     android:textAllCaps="false"
-    android:textOff="@string/valve3"
-    android:textOn="@string/valve3"
+    android:textOff="@string/valve3_close"
+    android:textOn="@string/valve3_open"
     android:textSize="@dimen/font_11"
     android:visibility="invisible"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/iv_valve"
     app:layout_constraintStart_toEndOf="@id/btn_valve2" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
