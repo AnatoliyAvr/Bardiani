@@ -1,6 +1,8 @@
 package com.tolikavr.bardiani.presentation.start
 
+
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +19,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class StartFragment : Fragment() {
 
@@ -99,29 +102,29 @@ class StartFragment : Fragment() {
       }
     }
 
-    binding.btnValve1.setOnCheckedChangeListener { _, isChecked ->
-      if (isChecked) {
-        viewModel.setValue1(true)
-      } else {
-        viewModel.setValue1(false)
+
+
+    binding.toggleGroup.setOnCheckedChangeListener { radioGroup, id ->
+      when (id) {
+        R.id.rdb_main_red ->{
+          Log.d("AAA", "${id}")
+        }
+        R.id.rdb_main_green ->{
+          Log.d("AAA", "${id}")
+        }
+        R.id.btn_valve1 -> {
+          Log.d("AAA", "${id}")
+        }
+        R.id.btn_valve2 -> {
+          Log.d("AAA", "${id}")
+        }
+        R.id.btn_valve3 -> {
+          Log.d("AAA", "${id}")
+        }
+        else  ->  Log.d("AAA", "${id}")
       }
     }
 
-    binding.btnValve2.setOnCheckedChangeListener { _, isChecked ->
-      if (isChecked) {
-        viewModel.setValue2(true)
-      } else {
-        viewModel.setValue2(false)
-      }
-    }
-
-    binding.btnValve3.setOnCheckedChangeListener { _, isChecked ->
-      if (isChecked) {
-        viewModel.setValue3(true)
-      } else {
-        viewModel.setValue3(false)
-      }
-    }
 
   }
 
